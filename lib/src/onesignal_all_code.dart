@@ -7,7 +7,7 @@ import 'package:onesignal_flutter/onesignal_flutter.dart';
 //ONESIGNAL
 class MyApp extends StatefulWidget {
   @override
-  _MyAppState createState() => new _MyAppState();
+  _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
@@ -283,6 +283,7 @@ class _MyAppState extends State<MyApp> {
 
     var notification = OSCreateNotification(
         playerIds: [playerId],
+        //playerIds: ['07c21f8b-207f-42b2-b377-5c739e6f58ac'],
         content: "this is a test from OneSignal's Flutter SDK",
         heading: "Test Notification",
         iosAttachments: {"id1": imgUrlString},
@@ -307,6 +308,7 @@ class _MyAppState extends State<MyApp> {
     var playerId = deviceState.userId!;
 
     var notification = OSCreateNotification.silentNotification(
+        //playerIds: ['07c21f8b-207f-42b2-b377-5c739e6f58ac'], additionalData: {'test': 'value'});
         playerIds: [playerId], additionalData: {'test': 'value'});
 
     var response = await OneSignal.shared.postNotification(notification);
@@ -377,37 +379,37 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new Scaffold(
-          appBar: new AppBar(
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
             title: const Text('OneSignal Flutter Demo'),
             backgroundColor: Color.fromARGB(255, 212, 86, 83),
           ),
           body: Container(
             padding: EdgeInsets.all(10.0),
             child: SingleChildScrollView(
-              child: new Table(
+              child: Table(
                 children: [
-                  new TableRow(children: [
-                    new OneSignalButton(
+                  TableRow(children: [
+                    OneSignalButton(
                         "Get Tags", _handleGetTags, !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton(
+                  TableRow(children: [
+                    OneSignalButton(
                         "Send Tags", _handleSendTags, !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton("Prompt for Push Permission",
+                  TableRow(children: [
+                    OneSignalButton("Prompt for Push Permission",
                         _handlePromptForPushPermission, !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton("Print Device State",
-                        _handleGetDeviceState, !_enableConsentButton)
+                  TableRow(children: [
+                    OneSignalButton("Print Device State", _handleGetDeviceState,
+                        !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new TextField(
+                  TableRow(children: [
+                    TextField(
                       textAlign: TextAlign.center,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           hintText: "Email Address",
                           labelStyle: TextStyle(
                             color: Color.fromARGB(255, 212, 86, 83),
@@ -419,23 +421,23 @@ class _MyAppState extends State<MyApp> {
                       },
                     )
                   ]),
-                  new TableRow(children: [
+                  TableRow(children: [
                     Container(
                       height: 8.0,
                     )
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton(
+                  TableRow(children: [
+                    OneSignalButton(
                         "Set Email", _handleSetEmail, !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton("Logout Email", _handleLogoutEmail,
+                  TableRow(children: [
+                    OneSignalButton("Logout Email", _handleLogoutEmail,
                         !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new TextField(
+                  TableRow(children: [
+                    TextField(
                       textAlign: TextAlign.center,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           hintText: "SMS Number",
                           labelStyle: TextStyle(
                             color: Color.fromARGB(255, 212, 86, 83),
@@ -447,43 +449,43 @@ class _MyAppState extends State<MyApp> {
                       },
                     )
                   ]),
-                  new TableRow(children: [
+                  TableRow(children: [
                     Container(
                       height: 8.0,
                     )
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton("Set SMS Number", _handleSetSMSNumber,
+                  TableRow(children: [
+                    OneSignalButton("Set SMS Number", _handleSetSMSNumber,
                         !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton("Logout SMS Number",
-                        _handleLogoutSMSNumber, !_enableConsentButton)
+                  TableRow(children: [
+                    OneSignalButton("Logout SMS Number", _handleLogoutSMSNumber,
+                        !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton("Provide GDPR Consent", _handleConsent,
+                  TableRow(children: [
+                    OneSignalButton("Provide GDPR Consent", _handleConsent,
                         _enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton("Set Location Shared",
+                  TableRow(children: [
+                    OneSignalButton("Set Location Shared",
                         _handleSetLocationShared, !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton(
+                  TableRow(children: [
+                    OneSignalButton(
                         "Delete Tag", _handleDeleteTag, !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton("Post Notification",
+                  TableRow(children: [
+                    OneSignalButton("Post Notification",
                         _handleSendNotification, !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton("Post Silent Notification",
+                  TableRow(children: [
+                    OneSignalButton("Post Silent Notification",
                         _handleSendSilentNotification, !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new TextField(
+                  TableRow(children: [
+                    TextField(
                       textAlign: TextAlign.center,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           hintText: "External User ID",
                           labelStyle: TextStyle(
                             color: Color.fromARGB(255, 212, 86, 83),
@@ -495,21 +497,21 @@ class _MyAppState extends State<MyApp> {
                       },
                     )
                   ]),
-                  new TableRow(children: [
+                  TableRow(children: [
                     Container(
                       height: 8.0,
                     )
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton("Set External User ID",
+                  TableRow(children: [
+                    OneSignalButton("Set External User ID",
                         _handleSetExternalUserId, !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new OneSignalButton("Remove External User ID",
+                  TableRow(children: [
+                    OneSignalButton("Remove External User ID",
                         _handleRemoveExternalUserId, !_enableConsentButton)
                   ]),
-                  new TableRow(children: [
-                    new Container(
+                  TableRow(children: [
+                    Container(
                       child: new Text(_debugLabelString),
                       alignment: Alignment.center,
                     )
@@ -538,10 +540,10 @@ class OneSignalButtonState extends State<OneSignalButton> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new Table(
+    return Table(
       children: [
-        new TableRow(children: [
-          new FlatButton(
+        TableRow(children: [
+          FlatButton(
             disabledColor: Color.fromARGB(180, 212, 86, 83),
             disabledTextColor: Colors.white,
             color: Color.fromARGB(255, 212, 86, 83),
@@ -551,7 +553,7 @@ class OneSignalButtonState extends State<OneSignalButton> {
             onPressed: widget.enabled ? widget.onPressed : null,
           )
         ]),
-        new TableRow(children: [
+        TableRow(children: [
           Container(
             height: 8.0,
           )
