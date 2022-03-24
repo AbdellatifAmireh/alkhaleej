@@ -1,8 +1,10 @@
 import 'package:alkhaleej/app_screens/home_page.dart';
+import 'package:alkhaleej/src/onesignal_all_code.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() => runApp(const Home());
+//void main() => runApp(const Home());
+void main() => runApp(MyApp());
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
