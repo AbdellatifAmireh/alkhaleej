@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.daralkhaleej.alkhaleej.onesignal</string>
+		<string>group.com.daralkhaleej.alkhaleej2.onesignal</string>
 	</array>
 </dict>
 </plist>
