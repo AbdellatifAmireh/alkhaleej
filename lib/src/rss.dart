@@ -21,7 +21,7 @@ class RSSDemoState extends State<RSSDemo> {
   //'https://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss';
   RssFeed? _feed;
   String? _title;
-  static const String loadingFeedMsg = 'Loading Feed...';
+  static const String loadingFeedMsg = 'تحميل المقالات ...';
   static const String feedLoadErrorMsg = 'Error Loading Feed.';
   static const String feedOpenErrorMsg = 'Error Opening Feed.';
   static const String placeholderImg = 'images/no-image.png';
@@ -164,12 +164,13 @@ class RSSDemoState extends State<RSSDemo> {
   body() {
     return isFeedEmpty()
         ? const Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator.adaptive(),
           )
         : RefreshIndicator(
             key: _refreshKey,
             child: list(),
             onRefresh: () => load(),
+            triggerMode: RefreshIndicatorTriggerMode.onEdge,
           );
   }
 
